@@ -24,10 +24,11 @@ proc curlProgressFn(
     return
 
   let cols = terminalWidth()
+  let barSize = cols-2
   let percent = dlnow.toInt() / dltotal.toInt()
   let percentHuman = $toInt(percent * 100) & '%'
   stdout.eraseLine()
-  stdout.write('x'.repeat(toInt(cols.float*percent)))
+  stdout.write('x'.repeat(toInt(barSize.float*percent)))
   #stdout.write(percentHuman)
 
   stdout.flushFile()
